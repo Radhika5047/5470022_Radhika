@@ -1,32 +1,12 @@
-\# SDLC Assignment
-
-
-
-\## Agile Great Learning Screenshot
-
-
-
 !\[Agile Screenshot](https://raw.githubusercontent.com/Radhika5047/5470022\_Radhika/main/SDLC/agile\_greatlearning.png)
 
 
 
-\## Contents
+!\[Screenshot 1](https://raw.githubusercontent.com/Radhika5047/5470022\_Radhika/main/Linux/Screenshot1\_linux.png)
 
+!\[Screenshot 2](https://raw.githubusercontent.com/Radhika5047/5470022\_Radhika/main/Linux/Screenshot2\_linux.png)
 
+!\[Screenshot 3](https://raw.githubusercontent.com/Radhika5047/5470022\_Radhika/main/Linux/Screenshot3\_linux.png)
 
-\- \[Git Commands](./Git/git\_commands.md)
-
-\- \[Linux Practice](./Linux/linux\_practice.md)
-
-
-
-\## Technologies Used
-
-
-
-\- Git
-
-\- Linux
-
-\- Markdown
+!\[Screenshot 4](https://raw.githubusercontent.com/Radhika5047/5470022\_Radhika/main/Linux/Screenshot4\_linux.png)
 
