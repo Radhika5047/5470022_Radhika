@@ -1,0 +1,1064 @@
+1.SALES BY MATCH
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+int sockMerchant(int n, vector<int> ar) {
+    unordered_map<int, int> freq;  
+    int pairs = 0;
+
+    for (int color : ar) {
+        freq[color]++;
+        if (freq[color] % 2 == 0) {
+            pairs++;   
+        }
+    }
+
+    return pairs;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string ar_temp_temp;
+    getline(cin, ar_temp_temp);
+
+    vector<string> ar_temp = split(rtrim(ar_temp_temp));
+
+    vector<int> ar(n);
+
+    for (int i = 0; i < n; i++) {
+        int ar_item = stoi(ar_temp[i]);
+
+        ar[i] = ar_item;
+    }
+
+    int result = sockMerchant(n, ar);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+vector<string> split(const string &str) {
+    vector<string> tokens;
+
+    string::size_type start = 0;
+    string::size_type end = 0;
+
+    while ((end = str.find(" ", start)) != string::npos) {
+        tokens.push_back(str.substr(start, end - start));
+
+        start = end + 1;
+    }
+
+    tokens.push_back(str.substr(start));
+
+    return tokens;
+}
+
+
+
+
+2.ZIG ZAG SEQUENCE
+#include <bits/stdc++.h>
+using namespace std;
+
+void findZigZagSequence(vector < int > a, int n){
+    sort(a.begin(), a.end());
+    int mid = (n - 1)/2;
+    swap(a[mid], a[n-1]);
+
+    int st = mid + 1;
+    int ed = n - 2;
+    while(st <= ed){
+        swap(a[st], a[ed]);
+        st = st + 1;
+        ed = ed - 1;
+    }
+    for(int i = 0; i < n; i++){
+        if(i > 0) cout << " ";
+        cout << a[i];
+    }
+    cout << endl;
+}
+
+int main() {
+    int n, x;
+    int test_cases;
+    cin >> test_cases;
+
+    for(int cs = 1; cs <= test_cases; cs++){
+        cin >> n;
+        vector < int > a;
+        for(int i = 0; i < n; i++){
+            cin >> x;
+            a.push_back(x);
+        }
+        findZigZagSequence(a, n);
+    }
+}
+
+
+
+
+
+3.DRAWING BOOK
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+
+int pageCount(int n, int p) {
+    int fromFront = p / 2;
+    int fromBack = (n / 2) - (p / 2);
+    return min(fromFront, fromBack);
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string p_temp;
+    getline(cin, p_temp);
+
+    int p = stoi(ltrim(rtrim(p_temp)));
+
+    int result = pageCount(n, p);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+
+
+
+4.TOWER BREAKERS
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+int towerBreakers(int n, int m) {
+  
+    if (m == 1) return 2;
+
+    if (n % 2 == 0) return 2;
+
+    return 1;
+}
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string t_temp;
+    getline(cin, t_temp);
+
+    int t = stoi(ltrim(rtrim(t_temp)));
+
+    for (int t_itr = 0; t_itr < t; t_itr++) {
+        string first_multiple_input_temp;
+        getline(cin, first_multiple_input_temp);
+
+        vector<string> first_multiple_input = split(rtrim(first_multiple_input_temp));
+
+        int n = stoi(first_multiple_input[0]);
+
+        int m = stoi(first_multiple_input[1]);
+
+        int result = towerBreakers(n, m);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+vector<string> split(const string &str) {
+    vector<string> tokens;
+
+    string::size_type start = 0;
+    string::size_type end = 0;
+
+    while ((end = str.find(" ", start)) != string::npos) {
+        tokens.push_back(str.substr(start, end - start));
+
+        start = end + 1;
+    }
+
+    tokens.push_back(str.substr(start));
+
+    return tokens;
+}
+
+
+
+
+
+5.CEASOR CIPHER
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+
+string caesarCipher(string s, int k) {
+    string result = "";
+    k = k % 26;
+
+    for (char c : s) {
+        if (isalpha(c)) {
+            char base = isupper(c) ? 'A' : 'a';
+            char shifted = (c - base + k) % 26 + base;
+            result += shifted;
+        } else {
+            result += c;
+        }
+    }
+    return result;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string s;
+    getline(cin, s);
+
+    string k_temp;
+    getline(cin, k_temp);
+
+    int k = stoi(ltrim(rtrim(k_temp)));
+
+    string result = caesarCipher(s, k);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+
+
+
+
+6. MAX MIN
+#include <bits/stdc++.h>
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+int maxMin(int k, vector<int> arr) {
+    sort(arr.begin(), arr.end());   
+    int n = arr.size();
+    int unfairness = INT_MAX;
+    for (int i = 0; i <= n - k; i++) {
+        int diff = arr[i + k - 1] - arr[i];
+        unfairness = min(unfairness, diff);
+    }
+
+    return unfairness;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    string k_temp;
+    getline(cin, k_temp);
+    int k = stoi(ltrim(rtrim(k_temp)));
+
+    vector<int> arr(n);
+    for (int i = 0; i < n; i++) {
+        string arr_item_temp;
+        getline(cin, arr_item_temp);
+        int arr_item = stoi(ltrim(rtrim(arr_item_temp)));
+        arr[i] = arr_item;
+    }
+
+    int result = maxMin(k, arr);
+    fout << result << "\n";
+
+    fout.close();
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+    return s;
+}
+
+
+7.DYNAMIC ARRAY
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+vector<int> dynamicArray(int n, vector<vector<int>> queries) {
+    vector<vector<int>> arr(n);  
+    vector<int> ans;             
+    int lastAnswer = 0;
+
+    for (auto &q : queries) {
+        int type = q[0];
+        int x = q[1];
+        int y = q[2];
+
+        int idx = (x ^ lastAnswer) % n;
+
+        if (type == 1) {
+            arr[idx].push_back(y);
+        } else if (type == 2) {
+            int val = arr[idx][y % arr[idx].size()];
+            lastAnswer = val;
+            ans.push_back(lastAnswer);
+        }
+    }
+
+    return ans;
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string first_multiple_input_temp;
+    getline(cin, first_multiple_input_temp);
+
+    vector<string> first_multiple_input = split(rtrim(first_multiple_input_temp));
+
+    int n = stoi(first_multiple_input[0]);
+
+    int q = stoi(first_multiple_input[1]);
+
+    vector<vector<int>> queries(q);
+
+    for (int i = 0; i < q; i++) {
+        queries[i].resize(3);
+
+        string queries_row_temp_temp;
+        getline(cin, queries_row_temp_temp);
+
+        vector<string> queries_row_temp = split(rtrim(queries_row_temp_temp));
+
+        for (int j = 0; j < 3; j++) {
+            int queries_row_item = stoi(queries_row_temp[j]);
+
+            queries[i][j] = queries_row_item;
+        }
+    }
+
+    vector<int> result = dynamicArray(n, queries);
+
+    for (size_t i = 0; i < result.size(); i++) {
+        fout << result[i];
+
+        if (i != result.size() - 1) {
+            fout << "\n";
+        }
+    }
+
+    fout << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+vector<string> split(const string &str) {
+    vector<string> tokens;
+
+    string::size_type start = 0;
+    string::size_type end = 0;
+
+    while ((end = str.find(" ", start)) != string::npos) {
+        tokens.push_back(str.substr(start, end - start));
+
+        start = end + 1;
+    }
+
+    tokens.push_back(str.substr(start));
+
+    return tokens;
+}
+
+
+
+
+8.GRID CHALLENGE
+#include <bits/stdc++.h>
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+string gridChallenge(vector<string> grid) {
+    int n = grid.size();
+    
+    for (int i = 0; i < n; i++) {
+        sort(grid[i].begin(), grid[i].end());
+    }
+    for (int col = 0; col < n; col++) {
+        for (int row = 1; row < n; row++) {
+            if (grid[row][col] < grid[row - 1][col]) {
+                return "NO";
+            }
+        }
+    }
+
+    return "YES";
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string t_temp;
+    getline(cin, t_temp);
+
+    int t = stoi(ltrim(rtrim(t_temp)));
+
+    for (int t_itr = 0; t_itr < t; t_itr++) {
+        string n_temp;
+        getline(cin, n_temp);
+
+        int n = stoi(ltrim(rtrim(n_temp)));
+
+        vector<string> grid(n);
+
+        for (int i = 0; i < n; i++) {
+            string grid_item;
+            getline(cin, grid_item);
+
+            grid[i] = grid_item;
+        }
+
+        string result = gridChallenge(grid);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+
+
+
+
+9.PRIME DATES
+#include <bits/stdc++.h>
+using namespace std;
+
+int month[15];
+
+void updateLeapYear(int year) {
+    if(year % 400 == 0) {
+        month[2] = 29;   // FIX 1
+    } else if(year % 100 == 0) {
+        month[2] = 28;   // FIX 2
+    } else if(year % 4 == 0) {
+        month[2] = 29;
+    } else {
+        month[2] = 28;
+    }
+}
+
+void storeMonth() {
+    month[1] = 31;
+    month[2] = 28;
+    month[3] = 31;
+    month[4] = 30;
+    month[5] = 31;
+    month[6] = 30;
+    month[7] = 31;
+    month[8] = 31;
+    month[9] = 30;
+    month[10] = 31;
+    month[11] = 30;
+    month[12] = 31;
+}
+
+int findLuckyDates(int d1, int m1, int y1, int d2, int m2, int y2) {
+    storeMonth();
+
+    int result = 0;
+
+    while(true) {
+        int x = d1;
+        x = x * 100 + m1;
+        x = x * 10000 + y1;              // FIX 3
+        if(x % 4 == 0 || x % 7 == 0) {   // FIX 4
+            result = result + 1;
+        }
+        if(d1 == d2 && m1 == m2 && y1 == y2) {
+            break;
+        }
+        updateLeapYear(y1);
+        d1 = d1 + 1;
+        if(d1 > month[m1]) {
+            m1 = m1 + 1;
+            d1 = 1;
+            if(m1 > 12) {
+                y1 =  y1 + 1;
+                m1 = 1;                  // FIX 5
+            }
+        }
+    }
+    return result;
+}
+
+int main() {
+    string str;
+    int d1, m1, y1, d2, m2, y2;
+    getline(cin, str);
+    for(int i = 0; i < str.size(); i++) {
+        if(str[i] == '-') {
+            str[i] = ' ';
+        }
+    }
+    stringstream ss;
+    ss << str;
+    ss >> d1 >> m1 >> y1 >> d2 >> m2 >> y2;
+
+    int result = findLuckyDates(d1, m1, y1, d2, m2, y2);
+    cout << result << endl;
+}
+
+
+
+
+
+10.SHERLOCK AND ARRAY
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+string balancedSums(vector<int> arr) {
+    int total = accumulate(arr.begin(), arr.end(), 0);
+    int leftSum = 0;
+    for (int x : arr) {
+        if (leftSum == total - leftSum - x) {
+            return "YES";
+        }
+        leftSum += x;
+    }
+    return "NO";
+}
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string T_temp;
+    getline(cin, T_temp);
+
+    int T = stoi(ltrim(rtrim(T_temp)));
+
+    for (int T_itr = 0; T_itr < T; T_itr++) {
+        string n_temp;
+        getline(cin, n_temp);
+
+        int n = stoi(ltrim(rtrim(n_temp)));
+
+        string arr_temp_temp;
+        getline(cin, arr_temp_temp);
+
+        vector<string> arr_temp = split(rtrim(arr_temp_temp));
+
+        vector<int> arr(n);
+
+        for (int i = 0; i < n; i++) {
+            int arr_item = stoi(arr_temp[i]);
+
+            arr[i] = arr_item;
+        }
+
+        string result = balancedSums(arr);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+vector<string> split(const string &str) {
+    vector<string> tokens;
+
+    string::size_type start = 0;
+    string::size_type end = 0;
+
+    while ((end = str.find(" ", start)) != string::npos) {
+        tokens.push_back(str.substr(start, end - start));
+
+        start = end + 1;
+    }
+
+    tokens.push_back(str.substr(start));
+
+    return tokens;
+}
+
+
+
+
+
+
+
+
+11.RECURSIVE DIGIT SUM
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+vector<string> split(const string &);
+
+int superDigit(string n, int k) {
+
+    auto digitSum = [&](string s) {
+        long long sum = 0;
+        for (char c : s) sum += c - '0';
+        return sum;
+    };
+
+    long long sum = digitSum(n) * 1LL * k;
+
+    while (sum >= 10) {
+        long long temp = 0;
+        while (sum > 0) {
+            temp += sum % 10;
+            sum /= 10;
+        }
+        sum = temp;
+    }
+
+    return (int)sum;
+}
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string first_multiple_input_temp;
+    getline(cin, first_multiple_input_temp);
+
+    vector<string> first_multiple_input = split(rtrim(first_multiple_input_temp));
+
+    string n = first_multiple_input[0];
+
+    int k = stoi(first_multiple_input[1]);
+
+    int result = superDigit(n, k);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+vector<string> split(const string &str) {
+    vector<string> tokens;
+
+    string::size_type start = 0;
+    string::size_type end = 0;
+
+    while ((end = str.find(" ", start)) != string::npos) {
+        tokens.push_back(str.substr(start, end - start));
+
+        start = end + 1;
+    }
+
+    tokens.push_back(str.substr(start));
+
+    return tokens;
+}
+
+
+
+
+
+
+
+12.COUNTER GAME 
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+string counterGame(long n) {
+    bool louiseTurn = true; 
+    while (n > 1) {
+        if ((n & (n - 1)) == 0) {
+            n /= 2;
+        } else {
+            long p = 1L << (63 - __builtin_clzll(n));
+            n -= p;
+        }
+        louiseTurn = !louiseTurn; 
+    }
+    return louiseTurn ? "Richard" : "Louise";
+}
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string t_temp;
+    getline(cin, t_temp);
+
+    int t = stoi(ltrim(rtrim(t_temp)));
+
+    for (int t_itr = 0; t_itr < t; t_itr++) {
+        string n_temp;
+        getline(cin, n_temp);
+
+        long n = stol(ltrim(rtrim(n_temp)));
+
+        string result = counterGame(n);
+
+        fout << result << "\n";
+    }
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
+
+
+
+
+
+
+13.SUM VS XOR
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+string ltrim(const string &);
+string rtrim(const string &);
+
+long sumXor(long n) {
+    if (n == 0) return 1; 
+    
+    int zeroBits = 0;
+    while (n > 0) {
+        if ((n & 1) == 0) zeroBits++;
+        n >>= 1;
+    }
+    return 1L << zeroBits; 
+}
+
+
+int main()
+{
+    ofstream fout(getenv("OUTPUT_PATH"));
+
+    string n_temp;
+    getline(cin, n_temp);
+
+    long n = stol(ltrim(rtrim(n_temp)));
+
+    long result = sumXor(n);
+
+    fout << result << "\n";
+
+    fout.close();
+
+    return 0;
+}
+
+string ltrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        s.begin(),
+        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
+    );
+
+    return s;
+}
+
+string rtrim(const string &str) {
+    string s(str);
+
+    s.erase(
+        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
+        s.end()
+    );
+
+    return s;
+}
